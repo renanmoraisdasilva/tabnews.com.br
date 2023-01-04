@@ -38,9 +38,6 @@ export default function removeMarkdown(md, options) {
       // Remove abbreviations
       output = output.replace(/\*\[.*\]:.*\n/, '');
     }
-    output = output
-      // Remove HTML tags
-      .replace(/<[^>]*>/g, '');
 
     var htmlReplaceRegex = new RegExp('<[^>]*>', 'g');
     if (options.htmlTagsToSkip.length > 0) {
@@ -56,18 +53,14 @@ export default function removeMarkdown(md, options) {
       .replace(htmlReplaceRegex, '')
       // Remove setext-style headers
       .replace(/^[=\-]{2,}\s*$/g, '')
-      // Remove footnotes?
-      .replace(/\[\^.+?\](\: .*?$)?/g, '')
-      .replace(/\s{0,2}\[.*?\]: .*?$/g, '')
+      // Remove footnotes and reference-style links
+      .replace(/\s{0,2}\[.*?\]: .*?$/gm, '')
       // Remove images
       .replace(/\!\[(.*?)\][\[\(].*?[\]\)]/g, options.useImgAltText ? '$1' : '')
       // Remove inline links
       .replace(/\[([^\]]*?)\][\[\(].*?[\]\)]/g, options.replaceLinksWithURL ? '$2' : '$1')
       // Remove blockquotes
       .replace(/^(\n)?\s{0,3}>\s?/gm, '$1')
-      // .replace(/(^|\n)\s{0,3}>\s?/g, '\n\n')
-      // Remove reference-style links?
-      .replace(/^\s{1,2}\[(.*?)\]: (\S+)( ".*?")?\s*$/g, '')
       // Remove atx-style headers
       .replace(/^(\n)?\s{0,}#{1,6}\s*( (.+))? +#+$|^(\n)?\s{0,}#{1,6}\s*( (.+))?$/gm, '$1$3$4$6')
       // Remove * emphasis
@@ -80,10 +73,6 @@ export default function removeMarkdown(md, options) {
       .replace(/(`{3,})(.*?)\1/gm, '$2')
       // Remove inline code
       .replace(/`(.+?)`/g, '$1')
-      // // Replace two or more newlines with exactly two? Not entirely sure this belongs here...
-      // .replace(/\n{2,}/g, '\n\n')
-      // // Remove newlines in a paragraph
-      // .replace(/(\S+)\n\s*(\S+)/g, '$1 $2')
       // Replace strike through
       .replace(/~(.*?)~/g, '$1');
 

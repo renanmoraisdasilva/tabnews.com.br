@@ -1,11 +1,13 @@
 {
   "dependencies": {
-    "@bytemd/plugin-breaks": "1.17.4",
-    "@bytemd/plugin-gemoji": "1.17.4",
-    "@bytemd/plugin-gfm": "1.17.4",
-    "@bytemd/plugin-highlight-ssr": "1.17.4",
-    "@bytemd/plugin-mermaid": "1.17.4",
-    "@bytemd/react": "1.17.4",
+    "@bytemd/plugin-breaks": "1.20.0",
+    "@bytemd/plugin-gemoji": "1.20.0",
+    "@bytemd/plugin-gfm": "1.20.0",
+    "@bytemd/plugin-highlight-ssr": "1.20.0",
+    "@bytemd/plugin-math": "1.20.0",
+    "@bytemd/plugin-math-ssr": "1.20.0",
+    "@bytemd/plugin-mermaid": "1.20.0",
+    "@bytemd/react": "1.20.0",
     "@primer/octicons-react": "17.8.0",
     "@primer/react": "35.13.0",
     "@resvg/resvg-js": "2.1.0",
@@ -42,7 +44,6 @@
     "snakeize": "0.1.0",
     "styled-components": "5.3.6",
     "swr": "2.0.0-beta.1",
-    "unist-builder": "3.0.0",
     "uuid": "9.0.0"
   },
   "devDependencies": {

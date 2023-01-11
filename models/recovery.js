@@ -69,7 +69,7 @@ Rua Antônio da Veiga, 495, Blumenau, SC, 89012-500`,
 }
 
 function getRecoverPageEndpoint(tokenId) {
-  const webserverHost = webserver.getHost();
+  const webserverHost = webserver.host;
   return `${webserverHost}/cadastro/recuperar/${tokenId}`;
 }
 

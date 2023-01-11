@@ -20,7 +20,7 @@ const configurations = {
   allowExitOnIdle: true,
 };
 
-if (!webserver.isLambdaServer()) {
+if (!webserver.isLambdaServer) {
   configurations.max = 30;
 
   // https://github.com/filipedeschamps/tabnews.com.br/issues/84
@@ -48,7 +48,7 @@ async function query(query, options = {}) {
       const tooManyConnections = await checkForTooManyConnections(client);
 
       client.release();
-      if (tooManyConnections && webserver.isLambdaServer()) {
+      if (tooManyConnections && webserver.isLambdaServer) {
         await cache.pool.end();
         cache.pool = null;
       }
@@ -163,7 +163,7 @@ const UNDEFINED_FUNCTION = '42883';
 function parseQueryErrorAndLog(error, query) {
   const expectedErrorsCode = [UNIQUE_CONSTRAINT_VIOLATION, SERIALIZATION_FAILURE];
 
-  if (!webserver.isLambdaServer()) {
+  if (!webserver.isLambdaServer) {
     expectedErrorsCode.push(UNDEFINED_FUNCTION);
   }
 

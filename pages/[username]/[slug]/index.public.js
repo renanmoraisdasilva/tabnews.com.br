@@ -321,7 +321,7 @@ export async function getStaticProps(context) {
 
   const oneLineBody = removeMarkdown(secureContentFound.body, { maxLength: 190 });
 
-  const webserverHost = webserver.getHost();
+  const webserverHost = webserver.host;
 
   const contentMetadata = {
     title: `${secureContentFound.title ?? oneLineBody.substring(0, 80)} · ${secureContentFound.owner_username}`,

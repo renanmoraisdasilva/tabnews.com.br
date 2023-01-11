@@ -13,7 +13,7 @@ const transporterConfiguration = {
   },
 };
 
-if (!webserver.isLambdaServer()) {
+if (!webserver.isLambdaServer) {
   transporterConfiguration.secure = false;
 }
 
